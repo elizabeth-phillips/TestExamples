@@ -51,4 +51,10 @@ describe('App component', () => {
     // Overriding the mock context with custom behavior
     jest.spyOn(LocaleContext, 'Provider').mockImplementation(({ children, value }) => {
       expect(value.theme).toBe(mockTheme);
-      expect(value.curr
+      expect(value.currLocaleObj).toEqual(mockCurrLocaleObj);
+      return <div>{children}</div>;
+    });
+
+    expect(getByText('English :')).toBeInTheDocument();
+  });
+});
